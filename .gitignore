@@ -1,0 +1,7 @@
+# Python environment
+.venv/
+
+# Data and Jupyter
+data/
+*.csv
+.ipynb_checkpoints/
