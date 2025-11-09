@@ -34,7 +34,7 @@ Project template for setting up a Python data science environment with Conda, un
 
 ### 1. Clone & Prepare
 ```bash
-git clone git@github.com:worashf/solar-challenge-week1.git
+git clone git@github.com:GrimVad3r/solar-challenge-week1.git
 cd solar-challenge-week1
 ```
 
