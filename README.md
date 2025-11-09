@@ -95,20 +95,20 @@ This setup ensures that all subsequent data analysis and modeling tasks will be 
 
 ##Task-2
 
-Sierra Leone-Bumbuna: Data Quality and Meteorological Correlation Analysis
-This report summarizes the preparatory steps taken in the sierraleone-eda.ipynb notebook, focusing on the quality assessment and initial exploratory analysis of meteorological and solar irradiance data from Sierra Leone-Bumbuna.
+Benin-Malanville: Prioritizing Outlier-Free Analysis
+This report details the systematic data preparation steps executed in the benin_eda.ipynb notebook, which analyzes solar and meteorological data from Benin-Malanville.
 Task Planning and Strategy
-The notebook adheres to a highly prioritized and linear strategy optimized for data cleaning efficiency, as is common with large, time-series data:
-1.	Initial Profile (Objective): Quickly establish dataset size (525,600 records) and feature statistics using df.describe() to identify basic data range violations.
-2.	Data Cleaning (Methodology): Adopt the Z-score method (threshold > 3) as the sole cleaning step. This method is prioritized for handling extreme outliers in numerical features, which are common in sensor data.
-3.	Exploratory Data Analysis (EDA Outline): Focus the EDA almost exclusively on bivariate and multivariate scatter plots to visualize sensor relationship integrity, specifically between Relative Humidity (RH), Ambient Temperature (Tamb), and Global Horizontal Irradiance (GHI).
+The strategy employed is clear: maximum data integrity via aggressive cleaning, followed by targeted relationship exploration.
+1.	Prioritization: The notebook's immediate priority post-loading is data cleaning. The vast dataset size (525,600 records) necessitates automated cleaning methods to ensure statistical rigor.
+2.	Data Cleaning (Methodology): The Z-score method (threshold > 3) is applied across numerical features. This is a deliberate step to eliminate the 24,118 outliers (4.59% of data) before any statistical or visual analysis begins.
+3.	EDA Focus (Objective): The EDA centers on understanding the behavior of wind parameters in relation to solar radiation, specifically through scatter plots of GHI vs. Wind Speed/Gust/Direction. This suggests an objective to assess the impact of weather dynamics beyond just temperature and humidity on solar energy potential.
 Feasibility and Proactive Planning
-The approach is highly feasible due to its focus on a singular, powerful cleaning technique:
-•	Identified Challenge: Sensor data is prone to anomalous readings (spikes/drops).
-•	Proposed Solution: The Z-score outlier removal method (which flagged approximately 6.86% of records for Sierra Leone) is a realistic and efficient solution for statistical data cleaning. The cleaned subset (df_clean) ensures subsequent visualizations are not skewed by these extreme values.
-•	Dependencies/Barriers: The primary dependency is the assumption that the removed 36,079 records were genuine errors and not meaningful extreme weather events. This is a common and necessary trade-off for producing a clean baseline model input.
+The plan is highly feasible and proactive in addressing data quality issues inherent in wind and solar data:
+•	Identified Challenge: Wind and irradiance data often contain significant noise due to sensor limitations or transient effects (e.g., sudden gusts).
+•	Proposed Solution: The consistent application of Z-score filtering across all numerical columns provides a uniform mechanism for noise reduction, creating a more statistically reliable clean dataset (df_clean) for the wind analysis.
+•	Dependencies/Barriers: A minor challenge is the loss of records (4.59%), but this is mitigated by the robust size of the remaining clean dataset.
 Clarity and Organization of Report
-The notebook is clearly organized into three primary segments—loading, cleaning, and visualization—with a strong focus on visualizing sensor relationships. The use of bubble charts (scatter plots sized by a third variable like RH or BP) effectively allows for a multivariate view, communicating complex data dependencies clearly.
+The notebook maintains a clean, logical flow. The use of multivariate scatter plots (GHI vs. Tamb, sized by RH and BP) is a highlight, demonstrating a commitment to advanced data visualization to uncover subtle, non-linear relationships that a simple correlation matrix might miss. The separation of the outlier-free data (df_clean) is a critical organizational step, ensuring all subsequent cells operate on validated input.
 
 ```
 
