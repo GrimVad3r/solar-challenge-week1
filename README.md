@@ -34,7 +34,7 @@ Project template for setting up a Python data science environment with Conda, un
 
 ### 1. Clone & Prepare
 ```bash
-git clone git@github.com:worashf/solar-challenge-week1.git
+git clone git@github.com:GrimVad3r/solar-challenge-week1.git
 cd solar-challenge-week1
 ```
 
@@ -59,21 +59,6 @@ conda install jupyter pytest pylint
 jupyter notebook --notebook-dir=./notebooks
 ```
 
-### 4. Running Tests
-```bash
-# Run unit tests locally
-pytest tests/
-
-# Or via GitHub Actions (see .github/workflows/unittests.yml)
-```
-
-## 🔧 Key Files
-| File | Purpose |
-|------|---------|
-| `environment.yml` | Conda environment specification |
-| `.github/workflows/unittests.yml` | Automated test runner |
-| `notebooks/README.md` | Jupyter notebook guidelines |
-| `src/` | Main Python package source |
 
 ## 📝 License
 This project is [MIT licensed](LICENSE).
