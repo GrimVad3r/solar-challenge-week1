@@ -1,32 +1,37 @@
+# app/main.py
+
 import streamlit as st
-import pandas as pd
-import plotly.express as px
+import matplotlib.pyplot as plt
+import seaborn as sns
+from app.utils import get_data  # import function from utils.py
+
+# -----------------------------
+# Streamlit UI
+# -----------------------------
+st.title("🌞 Solar Data Dashboard")
+
+# Sidebar: select data type
+data_type = st.sidebar.selectbox("Select data type", ['clean', 'raw'])
 
 # Load data
-@st.cache_data
-def load_data():
-    return pd.read_csv("data/cleaned_data.csv")
+df = get_data(data_type)
 
-df = load_data()
+if df.empty:
+    st.warning("No data loaded! Please check your CSV files or path.")
+else:
+    st.subheader("Data Preview")
+    st.dataframe(df.head(10))
 
-st.title("Solar KPI Dashboard 🌞")
+    # Example chart: mean GHI per country
+    st.subheader("Mean GHI per Country")
+    summary_df = df.groupby('Country')['GHI'].mean().reset_index()
 
-# --- Widgets ---
-countries = st.multiselect("Select Country:", options=df['Country'].unique())
-filtered = df[df['Country'].isin(countries)] if countries else df
+    fig, ax = plt.subplots(figsize=(8,5))
+    sns.barplot(data=summary_df, x='Country', y='GHI', palette='skyblue', ax=ax)
+    ax.set_ylabel("Mean GHI")
+    ax.set_title("Mean Global Horizontal Irradiance by Country")
+    st.pyplot(fig)
 
-# --- KPI Example ---
-st.header("Key Performance Indicators")
-col1, col2 = st.columns(2)
-col1.metric("Avg GHI", f"{filtered['GHI'].mean():.2f}")
-col2.metric("Avg Temp (Tamb)", f"{filtered['Tamb'].mean():.2f}")
-
-# --- Boxplot ---
-st.header("GHI Distribution by Country")
-fig = px.box(filtered, x="Country", y="GHI")
-st.plotly_chart(fig, use_container_width=True)
-
-# --- Top Regions Table ---
-st.header("Top Regions by Avg GHI")
-top_regions = filtered.groupby("Region")["GHI"].mean().sort_values(ascending=False).head(10)
-st.dataframe(top_regions.reset_index().rename(columns={"GHI": "Avg GHI"}))
+    # Optional: full data table
+    st.subheader("Full Data Table")
+    st.dataframe(df)
