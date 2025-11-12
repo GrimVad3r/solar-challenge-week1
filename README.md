@@ -1,13 +1,10 @@
 
 # Ten Academy Week 0: Python Data Science Environment Setup
 
-![](https://img.shields.io/badge/Python-3.9+-blue)
-![](https://img.shields.io/badge/Conda-4.12+-green)
-![](https://img.shields.io/badge/License-MIT-yellow)
 
 Project template for setting up a Python data science environment with Conda, unit testing, and Jupyter notebooks.
 
-## 🛠️ Project Structure
+## Project Structure
 
 ```
      
@@ -30,7 +27,7 @@ Project template for setting up a Python data science environment with Conda, un
     └── README.md
 ```
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### 1. Clone & Prepare
 ```bash
@@ -59,8 +56,6 @@ conda install jupyter pytest pylint
 jupyter notebook --notebook-dir=./notebooks
 ```
 
-
-## 📝 License
+### 📝 License
 This project is [MIT licensed](LICENSE).
 
----
