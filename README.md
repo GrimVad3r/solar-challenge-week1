@@ -1,2 +1,61 @@
-# solar-challenge-week1
-KAIM 8 Challenge
+
+# Ten Academy Week 0: Python Data Science Environment Setup
+
+
+Project template for setting up a Python data science environment with Conda, unit testing, and Jupyter notebooks.
+
+## Project Structure
+
+```
+     
+├── .github/
+│   └── workflows
+        |── ci.yml
+│       ├── unittests.yml        # GitHub Actions CI
+├── .gitignore
+├── requirements.txt             # Pip dependencies (alternative)
+├── environment.yml              # Conda dependencies (primary)
+├── README.md
+├── src/                         # Main source code
+├── notebooks/                   # Jupyter notebooks
+│   ├── __init__.py
+│   └── README.md
+├── tests/                       # Unit tests
+│   ├── __init__.py
+└── scripts/                     # Utility scripts
+    ├── __init__.py
+    └── README.md
+```
+
+## Setup Instructions
+
+### 1. Clone & Prepare
+```bash
+git clone git@github.com:GrimVad3r/solar-challenge-week1.git
+cd solar-challenge-week1
+```
+
+### 2. Conda Environment Setup
+```bash
+# Create from environment.yml
+conda env create -f environment.yml
+
+# Activate
+conda activate solar-challenge-week1
+
+# Install pip requirements (if needed)
+pip install -r requirements.txt
+```
+
+### 3. Development Tools
+```bash
+# Install development dependencies
+conda install jupyter pytest pylint
+
+# Launch Jupyter
+jupyter notebook --notebook-dir=./notebooks
+```
+
+### 📝 License
+This project is [MIT licensed](LICENSE).
+
